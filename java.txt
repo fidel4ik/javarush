@@ -1,0 +1,361 @@
+System.out.println(1); 
+
+public class Home
+{
+    public static void main(String[] args)
+    {
+        System.out.print("Amigo ");
+        System.out.print("The ");
+        System.out.print("Best");
+    }
+}
+
+########
+package com.javarush.test.level01.lesson04.task05;
+########
+
+/* Исправь программу
+Внесите изменения в программу, чтобы выводился на экран текст: «Coding in java». Используйте переменные.
+*/
+public class Solution
+{
+    public static void main(String[] args) {
+        String s1 = "Coding";
+        String s2 = "in";
+        String s3 = "java";
+        System.out.println(s1 + " " + s2 + " " + s3);
+
+    }
+}
+####
+package com.javarush.test.level01.lesson08.task03;
+
+/* Решаем задачи
+Напиши программу, которая выводит на экран надпись: «Хочешь - решай задачи, не хочешь - решай нехотя» 16 раз.
+*/
+public class Solution
+{
+    public static void main(String[] args)
+    {
+    String a = "Хочешь - решай задачи, не хочешь - решай нехотя";
+    for (int i = 1; i <= 4; i++) 
+        {
+            print4Times(a);
+        }
+        //напишите тут ваш код
+    }
+
+    public static void print4Times(String s)
+    {
+        System.out.println(s);
+        System.out.println(s);
+        System.out.println(s);
+        System.out.println(s);
+    }
+}
+====================
+
+
+	Копирование файла c:\data.txt в файл c:\result.txt
+
+package com.javarush.lesson2;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class FileCopy
+{
+    public static void main(String[] args) throws IOException
+    {
+        FileInputStream  fileInputStream = new FileInputStream("c:\\data.txt");
+        FileOutputStream  fileOutputStream = new FileOutputStream("c:\\result.txt");
+
+        while (fileInputStream.available() > 0)
+        {
+            int data = fileInputStream.read();
+            fileOutputStream.write(data);
+        }
+
+        fileInputStream.close();
+        fileOutputStream.close();
+    }
+}
+            
+====================
+
+Подумайте, что делает программа.
+По аналогии с методом printName(Student student), в метод main добавьте вызовы методов printAge(Student student) и printMoney(Student student)
+
+package com.javarush.test.level02.lesson02.task05;
+
+/* Вызов методов
+Подумайте, что делает программа.
+По аналогии с методом printName(Student student), в метод main добавьте вызовы методов printAge(Student student) и printMoney(Student student)
+*/
+public class Solution
+{
+    public static void main(String[] args) {
+        Student student = new Student();
+        printName(student);
+        printAge(student);
+        printMoney(student);
+
+    }
+
+    public static void printName(Student student){
+        System.out.println(student.name);
+    }
+
+    public static void printAge(Student student){
+        System.out.println(student.age);
+    }
+
+    public static void printMoney(Student student){
+        System.out.println(student.money);
+    }
+
+
+    public static class Student {
+        String name = "Amigo";
+        int age = 2;
+        int money = 0;
+    }
+}
+
+
+===============================
+package com.javarush.test.level02.lesson08.task03;
+
+/* Минимум трех чисел
+Написать функцию, которая вычисляет минимум из трёх чисел.
+Подсказка:
+Нужно написать тело существующей функции min и исправить возвращаемое значение.
+*/
+public class Solution
+{
+    public static int min(int a, int b, int c)
+    {
+        int x = 0;
+        if (a <= b && a <= c)
+            return a;
+        else if (b <= a && b <= c)
+            return b;
+        else if (c <= a && c <= b)
+            return c;
+        return 0;
+    }
+
+    public static void main(String[] args) throws Exception
+    {
+        System.out.println( min(1,2,3) );
+        System.out.println( min(-1,-2,-3) );
+        System.out.println( min(3,5,3) );
+        System.out.println( min(10,5,10) );
+    }
+
+}
+================================
+================================
+package com.javarush.test.level02.lesson08.task04;
+
+/* Минимум четырех чисел
+Написать функцию, которая вычисляет минимум из четырёх чисел.
+Функция min(a,b,c,d) должна использовать (вызывать) функцию min(a,b)
+Подсказка:
+Нужно написать тело обеих существующих функций min и исправить их возвращаемые значения.
+*/
+public class Solution
+{
+    public static int min(int a, int b, int c, int d)
+    {
+        int x = min(a,b);
+        int y = min(c,d);
+        if (x < y)
+            return x;
+        else
+            return y;
+    }
+
+    public static int min(int a, int b)
+    {
+        if (a <= b)
+            return a;
+        else
+            return b;
+    }
+
+    public static void main(String[] args) throws Exception
+    {
+        System.out.println( min(-20, -10) );
+        System.out.println( min(-20, -10, -30, -40) );
+        System.out.println( min(-20, -10, -30, 40) );
+    }
+}
+
+
+===========================
+- Ты уже знаешь, что классы находятся в пакетах. Так вот, полным именем класса считается имя, состоящее из всех пакетов, перечисленных через точку и имени класса. Примеры:
+Имя класса 			Имя пакета  Полное имя
+String 				java.lang 	java.lang.String
+FileInputStream 	java.io 	java.io.FileInputStream
+ArrayList 			java.util 	java.util.ArrayList
+IOException 		java.io 	java.io.IOException;
+
+--------------------------------------
+package com.javarush.test.level03.lesson03.task01;
+
+/* Реализация метода
+Добавьте метод public static void printString(String s) который будет выводить переданную строку на экран.
+*/
+public class Solution
+{
+    public static void printString(String s){
+        System.out.println(s);
+    }
+
+    public static void main(String[] args) {
+        printString("Hello Amigo!");
+    }
+}
+
+======================================
+package com.javarush.test.level03.lesson03.task02;
+
+/* Конвертер валют
+Реализуйте метод convertEurToUsd, переводящий евро в доллары по заданному курсу.
+Вызовите его дважды в методе main с любыми параметрами. Результаты выведите на экран, каждый раз с новой строки.
+Подсказка:
+Расчет выполняется по формуле: долларСША = евро * курс
+*/
+public class Solution
+{
+    public static void main(String[] args) {
+        System.out.println(convertEurToUsd(10,30.06));
+        System.out.println(convertEurToUsd(20,30.96));
+    }
+
+    public static double convertEurToUsd(int eur, double course){
+        return(eur * course);
+    }
+}
+
+
+
+Zerg zerg1= new Zerg();
+        zerg1.name = "ZERG1";
+Zerg zerg1= new Zerg();
+        zerg1.name = "ZERG1";
+=========================
+
+Ввод строки и числа с клавиатуры
+InputStream inputStream = System.in;
+Reader inputStreamReader = new InputStreamReader(inputStream);
+BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+String name = bufferedReader.readLine(); //читаем строку с клавиатуры
+String sAge = bufferedReader.readLine(); //читаем строку с клавиатуры
+int nAge = Integer.parseInt(sAge); //преобразовываем строку в число.
+---------
+Более компактная запись первой части:
+---------
+BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+String name = reader.readLine();
+String sAge = reader.readLine();
+int nAge = Integer.parseInt(sAge); 
+
+=====
+package com.javarush.test.level03.lesson08.task02;
+
+/* Зарплата через 5 лет
+Ввести с клавиатуры отдельно Имя, число1, число2. Вывести надпись:
+«Имя» получает «число1» через «число2» лет.
+Пример: Коля получает 3000 через 5 лет.
+*/
+
+import java.io.*;
+
+public class Solution
+{
+    public static void main(String[] args) throws Exception
+    {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String name = reader.readLine();
+        String salary = reader.readLine();
+        int nsalary = Integer.parseInt(salary);
+        String year = reader.readLine();
+        int nyear = Integer.parseInt(year);
+
+        System.out.println(name + " получает " + nsalary + " через " + nyear + " лет.");
+
+    }
+}
+===========
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        for(int i=0; i < s.length(); i++) {
+            if(s.charAt(i) == ' ') {
+                System.out.println(i);
+            }
+        }
+    }
+}
+=====================================
+package com.javarush.test.level04.lesson01.task02;
+
+/* Реализовать метод addPrice
+Реализовать метод addPrice(int applesPrice), чтобы при его вызове суммарная стоимость яблок увеличивалось на переданное значение.
+За суммарную стоимость яблок отвечает переменная public static int applesPrice.
+*/
+public class Solution
+{
+    public static void main(String[] args) {
+        Apple apple = new Apple();
+        Apple.addPrice(50);
+        Apple apple2 = new Apple();
+        Apple.addPrice(100);
+        System.out.println("Apples price is " + Apple.applesPrice);
+    }
+
+    public static class Apple{
+        public static int applesPrice = 0;
+
+        public static void addPrice(int applesPrice){
+            Apple.applesPrice += applesPrice;
+        }
+    }
+}
+
+================================================
+package com.javarush.test.level04.lesson02.task02;
+
+/* Реализовать метод addNewCat
+Реализовать метод addNewCat, чтобы при его вызове (т.е. добавлении нового кота), количество котов увеличивалось на 1. За количество котов отвечает переменная catsCount.
+*/
+
+public class Cat {
+    private static int catsCount = 0;
+
+    public static void addNewCat() {
+        catsCount +=1;
+    }
+  ====================
+  package com.javarush.test.level04.lesson02.task03;
+
+/* Реализовать метод setCatsCount
+Реализовать метод setCatsCount так, чтобы с его помощью можно было устанавливать значение переменной catsCount равное переданному параметру.
+*/
+
+public class Cat {
+    private static int catsCount = 0;
+
+    public static void setCatsCount(int catsCount) {
+       Cat.catsCount = catsCount;
+    }
+}
+=================================
+if ((year % 4 == 0)||(year % 100 == 0)||(year %400 == 0))
